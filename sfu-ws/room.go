@@ -70,10 +70,10 @@ func room(w http.ResponseWriter, r *http.Request) {
 		pubReceiver, err = api.NewPeerConnection(peerConnectionConfig)
 		checkError(err)
 
-		_, err = pubReceiver.AddTransceiver(webrtc.RTPCodecTypeAudio)
+		_, err = pubReceiver.AddTransceiverFromKind(webrtc.RTPCodecTypeAudio)
 		checkError(err)
 
-		_, err = pubReceiver.AddTransceiver(webrtc.RTPCodecTypeVideo)
+		_, err = pubReceiver.AddTransceiverFromKind(webrtc.RTPCodecTypeVideo)
 		checkError(err)
 
 		pubReceiver.OnTrack(func(remoteTrack *webrtc.Track, receiver *webrtc.RTPReceiver) {
